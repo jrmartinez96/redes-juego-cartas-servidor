@@ -11,3 +11,4 @@ class Hand extends Stack{
     }
 }
 
+export default Hand;

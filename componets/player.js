@@ -1,5 +1,11 @@
+import Hand from "./hand.js";
+
 class Player {
-    constructor(){
-        
+
+    constructor(name){
+        this.name = name;
+        this.hand = new Hand();        
     }
 }
+
+export default Player;

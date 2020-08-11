@@ -1,9 +1,5 @@
 const net = require('net');
 
-let stack = [];
-
-console.log(stack.length);
-
 const server = net.createServer()
 
 const port = 8080;

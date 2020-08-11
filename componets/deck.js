@@ -15,5 +15,6 @@ class Deck extends Stack{
             this.stack[j] = temp;
         }
     }
-
 }
+
+export default Deck;
