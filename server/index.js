@@ -57,7 +57,7 @@ wsServer.on('request', function(request) {
   
   connection.on('message', function(message){
     let data = JSON.parse(message.utf8Data);
-
+    
     if (data.opcion == 0) {
         let player = new Player(getUniqueID(), data.nombre, connection);
         players.push(player);
@@ -67,6 +67,33 @@ wsServer.on('request', function(request) {
             games.push(game);
             players = []
 
+            connection.on('close', function(req) {
+                game.players.forEach(playerr => {
+                    if (playerr.id !== player.id) {
+                        playerr.connection.sendUTF(JSON.stringify(
+                            {
+                                opcion: 4,
+                                gameId: game.id,
+                                mensaje: `${player.name} se desconecto del juego.`
+                            }
+                        ))
+
+                        playerr.connection.close()
+                    }
+                })
+
+                let gamePos = -1
+
+                games.forEach((gamee, index) => {
+                    if (gamee.id === game.id) {
+                        gamePos = index
+                    }
+                })
+
+                if (gamePos !== -1) {
+                    games.splice(gamePos, 1);
+                }
+            })
         }
     } else if (data.opcion == 1){
         if (!data.pasar){
