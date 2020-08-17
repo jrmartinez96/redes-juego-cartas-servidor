@@ -10,13 +10,15 @@ server.listen(port, function() {
 });
 
 server.on('connection', function(socket) {
-    clients.push(socket);
+    //clients.push(socket.id);
+    socket.id = Math.floor(Math.random() * 1000);
     console.log('A new connection has been established.');
 
     socket.on('data', function(chunk) {
         console.log('Data recibida por el cliente...');
         console.log(chunk.toString());
         //socket.write(chunk.toString());
+        socket.write(socket.id);
     });
 
     socket.on('end', function() {

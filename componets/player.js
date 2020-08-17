@@ -4,7 +4,8 @@ class Player {
 
     constructor(name){
         this.name = name;
-        this.hand = new Hand();        
+        this.hand = new Hand();
+        this.public_hand = new Hand();        
     }
 }
 
