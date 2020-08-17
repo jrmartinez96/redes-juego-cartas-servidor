@@ -19,7 +19,14 @@ class Game {
         this.state = 1;
         this.deal(this.players);
 
-        players.forEach(player => {
+        this.players.forEach(player => {
+            player.connection.sendUTF(JSON.stringify(
+                {
+                    opcion: 1,
+                    gameId: this.id, // Id del juego en el que estará el jugador
+                    playerId: player.id, // Identificador del jugador que se le asigno
+                }
+            ))
             player.connection.sendUTF(JSON.stringify({
                 opcion: 0,
                 gameId: this.id, // Identificador del juego
@@ -51,6 +58,7 @@ class Game {
                     [this.players[1].id]: this.players[1].hand.index + 1,
                     [this.players[2].id]: this.players[2].hand.index + 1
                 },
+                cartasJugador: player.hand
             }));
         });
     }

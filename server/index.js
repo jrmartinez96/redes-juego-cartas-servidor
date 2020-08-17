@@ -29,6 +29,7 @@ import pkg from 'websocket';
 const {server: webSocketServer} = pkg;
 import http from 'http'
 import Player from '../componets/player.js';
+import Game from '../componets/game.js'
 
 // Spinning the http server and the websocket server.
 const server = http.createServer();
