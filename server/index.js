@@ -24,7 +24,6 @@ game.validate_state();
 let games = [];
 let players = []
 
-const webSocketsServerPort = 8000 || process.env.PORT;
 import pkg from 'websocket';
 const {server: webSocketServer} = pkg;
 import http from 'http'
@@ -34,7 +33,7 @@ import Hand from '../componets/hand.js';
 
 // Spinning the http server and the websocket server.
 const server = http.createServer();
-server.listen(webSocketsServerPort);
+server.listen(process.env.PORT || 8000);
 const wsServer = new webSocketServer({
   httpServer: server
 });
