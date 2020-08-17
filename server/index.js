@@ -67,7 +67,7 @@ wsServer.on('request', function(request) {
             players = []
         }
 
-        connection.on('close', function(req) {
+        connection.on('close', function(req) { // Cuando un cliente se desconecta
             let playerPos = -1;
 
             players.forEach((playerr, index) => {
