@@ -86,6 +86,12 @@ wsServer.on('request', function(request) {
                                 });
                             }
                         });
+                    } else {
+                      connection.sendUTF(JSON.stringify({
+                        opcion: 4,
+                        gameId: game.id,
+                        mensaje: "Jugada no válida."
+                      }))
                     }
                 }
             });
