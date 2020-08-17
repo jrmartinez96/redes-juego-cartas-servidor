@@ -1,5 +1,5 @@
 # redes-juego-cartas-servidor
-Servidor de juego de cartas redes
+Servidor de juego de cartas Conquian, para la clase de REDES, Agosto 2020.
 
 
 <p align="center">
@@ -30,7 +30,7 @@ npm install npm@latest -g
 ```sh
 git clone https://github.com/jrmartinez96/redes-juego-cartas-servidor
 ```
-3. Install NPM packages
+2. Install NPM packages
 ```sh
 npm install
 ```
@@ -40,6 +40,7 @@ npm install
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+Para poder ingresar al juego, ingresar al siguiente link:
 https://conquian-cliente.herokuapp.com/
 
 
