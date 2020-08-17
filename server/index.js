@@ -24,7 +24,7 @@ game.validate_state();
 let games = [];
 let players = []
 
-const webSocketsServerPort = 8000;
+const webSocketsServerPort = 8000 || process.env.PORT;
 import pkg from 'websocket';
 const {server: webSocketServer} = pkg;
 import http from 'http'
