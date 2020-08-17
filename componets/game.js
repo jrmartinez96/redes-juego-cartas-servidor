@@ -1,5 +1,6 @@
 import Player from "./player.js";
 import Deck from "./deck.js";
+import Protocol from '../protocol/protocolo-conquian.js';
 
 class Game {
 
@@ -9,13 +10,49 @@ class Game {
         this.state = -1;
         this.principal_deck = new Deck();
         this.trash_deck = new Deck();
-        this.player_turn = 0;
+        this.player_turn = this.players[0].id;
         this.winner = null;
+        this.protocol = new Protocol();
     }
-
 
     start(){
         this.state = 1;
+        this.deal(this.players);
+
+        players.forEach(player => {
+            player.connection.sendUTF(JSON.stringify({
+                opcion: 0,
+                gameId: this.id, // Identificador del juego
+                turnoId: this.player_turn, // Id del usuario en turno
+                players: [ // Listado de jugadores en el juego
+                    {
+                        playerId: this.players[0].id, // identificador del jugador
+                        playerName: this.players[0].name// nombre del jugador
+                    },
+                    {
+                        playerId: this.players[1].id, // identificador del jugador
+                        playerName: this.players[1].name // nombre del jugador
+                    },
+                    {
+                        playerId: this.players[2].id, // identificador del jugador
+                        playerName: this.players[2].name // nombre del jugador
+                    }
+                ],
+                mesa: [
+                   
+                ],
+                cartaBasura: {
+                    cartaId: this.principal_deck.top(),
+                    nombreCarta:  this.principal_deck.top()
+                },
+                cantidadCartasBaraja: this.principal_deck.stack.length, // Cantidad de cartas que se encuentran en la baraja principal
+                cantidadCartas: { // Objeto que determina la cantidad de cartas que tiene cada jugador de la mesa, la llave es el id del jugador y al valor la cantidad de cartas que tiene
+                    [this.players[0].id]: this.players[0].hand.index + 1,
+                    [this.players[1].id]: this.players[1].hand.index + 1,
+                    [this.players[2].id]: this.players[2].hand.index + 1
+                },
+            }));
+        });
     }
 
     deal(players){
@@ -72,24 +109,5 @@ class Game {
     }
 
 }
-
-let p1 = new Player('Jose');
-let p2 = new Player('Luis');
-let p3 = new Player('Pedro');
-
-let players = []
-
-players.push(p1);
-players.push(p2);
-players.push(p3);
-
-
-let game = new Game(1, players);
-
-game.start();
-
-game.deal(players);
-
-game.validate_state();
 
 export default Game;

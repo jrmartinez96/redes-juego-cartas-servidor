@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jrmartinez96/redes-juego-cartas-servidor#readme",
   "dependencies": {
-    "net": "^1.0.2"
+    "net": "^1.0.2",
+    "websocket": "^1.0.31"
   }
 }
