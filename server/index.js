@@ -65,63 +65,64 @@ wsServer.on('request', function(request) {
             game.start();
             games.push(game);
             players = []
+        }
 
-            connection.on('close', function(req) {
-                game.players.forEach(playerr => {
-                    if (playerr.id !== player.id) {
-                        playerr.connection.sendUTF(JSON.stringify(
-                            {
-                                opcion: 4,
-                                gameId: game.id,
-                                mensaje: `${player.name} se desconecto del juego.`
-                            }
-                        ))
+        connection.on('close', function(req) { // Cuando un cliente se desconecta
+            let playerPos = -1;
 
-                        playerr.connection.close()
-                    }
-                })
+            players.forEach((playerr, index) => {
+                if (playerr.id === player.id) {
+                    playerPos = index
+                }
+            })
 
-                let gamePos = -1
+            if (playerPos !== -1) { // Si el jugador sigue en la lista de players
+                players.splice(playerPos, 1)
+            } else { // Si el jugador ya se encuentra en un juego
+                let gamePos = -1;
 
-                games.forEach((gamee, index) => {
-                    if (gamee.id === game.id) {
-                        gamePos = index
-                    }
+                games.forEach((game, index) => {
+                    game.players.forEach(playerr => {
+                        if (playerr.id === player.id) {
+                            gamePos = index
+                        }
+                    })
                 })
 
                 if (gamePos !== -1) {
+                    games[gamePos].players.forEach(playerr => {
+                        if (playerr.id !== player.id) {
+                            playerr.connection.sendUTF(JSON.stringify(
+                                {
+                                    opcion: 4,
+                                    gameId: games[gamePos].id,
+                                    mensaje: `${player.name} se desconecto del juego.`
+                                }
+                            ))
+    
+                            playerr.connection.close()
+                        }
+                    })
+
                     games.splice(gamePos, 1);
+                    console.log({games})
                 }
-            })
-        }
+            }
+        })
     } else if (data.opcion == 1){
+        let gamePos = -1;
+        games.forEach((game, indexGame) => {
+            if (game.id == data.gameId) {
+                gamePos = indexGame
+            }
+        })
+
+        let game = games[gamePos]
+
         if (!data.pasar){
-            games.forEach(game => {
-                let hand = new Hand();
-                if (game.id == data.gameId){
-                    data.cartasMano.forEach(carta => {
-                        hand.push(carta);
-                    });
-                    hand.sort();
-                    if (game.validate_hand(hand)){
-                        game.players.forEach(player => {
-                            if (player.id = data.playerId){
-                                hand.stack.forEach(card =>{
-                                    
-                                    player.public_hand.push(card);
-                                    
-                                });
-                            }
-                        });
-                    } else {
-                      connection.sendUTF(JSON.stringify({
-                        opcion: 4,
-                        gameId: game.id,
-                        mensaje: "Jugada no válida."
-                      }))
-                    }
-                }
-            });
+            game.changeGameState(1, data)
+        } else {
+            game.changeGameState(0)
         }
     } else if (data.opcion == 2){
         games.forEach(game => {
