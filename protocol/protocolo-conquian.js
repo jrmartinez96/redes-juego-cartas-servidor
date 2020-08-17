@@ -99,6 +99,7 @@ class Protocol{
         this.clienteResponse1 = {
             opcion: 1,
             playerId: 0, // Identificador del jugador que manda la jugada
+            gameId: 0,
             pasar: false, // Booleano que define si el jugador quiere pasar su turno o no, si es true es porque quiere pasar su turno
             cartaBasuraId: 0, // Id de la carta de basura que utilizará
             cartasMano: [ // Lista de las cartas que tiene en su mano que desea poner en la mesa junto la carta de basura
@@ -116,7 +117,8 @@ class Protocol{
         // Si la opcion es 2 el cliente querrá mandar un mensaje a todos
         this.clienteResponse2 = {
             opcion: 2,
-            playerId: 0, // identificador del cliente que manda el mensaje,
+            playerId: 0,
+            gameId: 0, // identificador del cliente que manda el mensaje,
             mensaje: "" // Mensaje que desea mandar
         }
 

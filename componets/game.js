@@ -86,7 +86,7 @@ class Game {
         }
     }
 
-    validate_hand(player, hand){
+    validate_hand(hand){
         let valid_hand = false;
 
         
@@ -114,6 +114,17 @@ class Game {
         }
 
         return valid_hand;
+    }
+
+    send_message(player_id, message){
+        this.players.forEach(player => {
+            player.connection.sendUTF(JSON.stringify({
+                opcion: 3,
+                playerId: player_id,
+                gameId: game.id, // identificador del cliente que manda el mensaje,
+                mensaje: message // Mensaje que desea mandar
+            }));
+        });
     }
 
 }

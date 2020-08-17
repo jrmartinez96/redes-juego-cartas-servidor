@@ -30,6 +30,7 @@ const {server: webSocketServer} = pkg;
 import http from 'http'
 import Player from '../componets/player.js';
 import Game from '../componets/game.js'
+import Hand from '../componets/hand.js';
 
 // Spinning the http server and the websocket server.
 const server = http.createServer();
@@ -67,7 +68,34 @@ wsServer.on('request', function(request) {
 
         }
     } else if (data.opcion == 1){
-
+        if (!data.pasar){
+            games.forEach(game => {
+                let hand = new Hand();
+                if (game.id == data.gameId){
+                    data.cartasMano.forEach(carta => {
+                        hand.push(carta);
+                    });
+                    hand.sort();
+                    if (game.validate_hand(hand)){
+                        game.players.forEach(player => {
+                            if (player.id = data.playerId){
+                                hand.stack.forEach(card =>{
+                                    
+                                    player.public_hand.push(card);
+                                    
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    } else if (data.opcion == 2){
+        games.forEach(game => {
+            if (game.id == data.gameId){
+                game.send_message(data.playerId, data.mensaje);
+            }
+        });
     }
   });
 });
