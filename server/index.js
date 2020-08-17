@@ -65,6 +65,7 @@ wsServer.on('request', function(request) {
             let game = new Game(getUniqueID(), players);
             game.start();
             games.push(game);
+            players = []
 
         }
     } else if (data.opcion == 1){
