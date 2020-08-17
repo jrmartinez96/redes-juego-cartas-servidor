@@ -110,33 +110,19 @@ wsServer.on('request', function(request) {
             }
         })
     } else if (data.opcion == 1){
+        let gamePos = -1;
+        games.forEach((game, indexGame) => {
+            if (game.id == data.gameId) {
+                gamePos = indexGame
+            }
+        })
+
+        let game = games[gamePos]
+
         if (!data.pasar){
-            games.forEach(game => {
-                let hand = new Hand();
-                if (game.id == data.gameId){
-                    data.cartasMano.forEach(carta => {
-                        hand.push(carta);
-                    });
-                    hand.sort();
-                    if (game.validate_hand(hand)){
-                        game.players.forEach(player => {
-                            if (player.id = data.playerId){
-                                hand.stack.forEach(card =>{
-                                    
-                                    player.public_hand.push(card);
-                                    
-                                });
-                            }
-                        });
-                    } else {
-                      connection.sendUTF(JSON.stringify({
-                        opcion: 4,
-                        gameId: game.id,
-                        mensaje: "Jugada no válida."
-                      }))
-                    }
-                }
-            });
+            game.changeGameState(1, data)
+        } else {
+            game.changeGameState(0)
         }
     } else if (data.opcion == 2){
         games.forEach(game => {

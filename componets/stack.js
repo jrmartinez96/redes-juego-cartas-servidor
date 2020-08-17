@@ -24,6 +24,7 @@ class Stack {
     pop(){
         if (!this.empty()){
             let element = this.stack[this.index];
+            this.stack.splice(this.index, 1)
             this.index--;
             return element;
         }
