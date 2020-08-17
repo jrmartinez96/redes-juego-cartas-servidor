@@ -121,7 +121,7 @@ class Game {
             player.connection.sendUTF(JSON.stringify({
                 opcion: 3,
                 playerId: player_id,
-                gameId: game.id, // identificador del cliente que manda el mensaje,
+                gameId: this.id, // identificador del cliente que manda el mensaje,
                 mensaje: message // Mensaje que desea mandar
             }));
         });
