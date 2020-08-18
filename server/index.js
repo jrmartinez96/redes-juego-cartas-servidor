@@ -32,10 +32,10 @@ import Game from '../componets/game.js'
 import Hand from '../componets/hand.js';
 
 // Spinning the http server and the websocket server.
-const port = process.argv[2]
-console.log(port)
+const ip = process.argv[2]
+const port = process.argv[3]
 const server = http.createServer();
-server.listen(process.env.PORT || port);
+server.listen(process.env.PORT || port, process.env.IP || ip);
 const wsServer = new webSocketServer({
   httpServer: server
 });

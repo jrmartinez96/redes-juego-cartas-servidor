@@ -2,7 +2,7 @@
 Servidor de juego de cartas Conquian, para la clase de REDES, Agosto 2020.
 
 
-### `node ./server/index.js [puerto]`
+### `node ./server/index.js [ip] [puerto]`
 Este comando es para poder correr el servidor en un ambiente local
 
 ### Repositorio del frontend
