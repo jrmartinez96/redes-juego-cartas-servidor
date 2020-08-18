@@ -27,6 +27,9 @@ El conqui√°n o tercerilla es un juego de naipes que se juega con la baraja espa√
 ### Video
 https://youtu.be/9h4wbNHmml4
 
+### Presentacion
+https://docs.google.com/presentation/d/1Dr7rVOAZXngoI7E8BXVNpqsh98WIV4g98CoPaTlx7eE/edit?usp=sharing
+
 
 ### Protocolo
 ```
