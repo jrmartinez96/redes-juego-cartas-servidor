@@ -44,5 +44,19 @@ mensaje de otro jugador.
     cartaId,
   cartaPagarId,
   
-  
+ 3. VIDEO
+ https://youtu.be/9h4wbNHmml4
+ 
+ 4. RETOS Y DIFICULTADES
+ En la definición del protocolo fue un poco complicado porque es un lienzo en blanco, al principio fue difícil definirlo pero conforme se 
+ fue construyendo fue más sencillo.
+ Otra de las dificultades que tuvimos fue la capacidad de compartir nuestras ideas ya que no nos podíamos ver en persona y trabajar juntos 
+ en esa manera.
+ También pensamos que el no poder usar librerías externas hizo que este proyecto fuera más retador, ya que teníamos que definir e 
+ implementar todo lo necesario para poder replicar el juego en un programa.
+ Por último, aprendimos sobre la importancia de protocolos de comunicación en una estructura cliente-servidor. Entendimos la importancia de 
+ la comunicación y comprensión sobre la serialización de datos a bajo nivel. Y logramos mantener la sincronización de distintos objetos que 
+ comparten un estado.
+
+
     
