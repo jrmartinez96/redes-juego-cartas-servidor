@@ -1,7 +1,20 @@
 REQUERIMIENTOS
 
-1.DESCRIPCION Y DETALLE DEL PROTOCOLO
-El protocolo utilizado se formó utilizando el formato JSON. La manera en la que funciona es que ambas respuestas del Servidor y del Cliente mandan un parámetro ‘opcion’ el cual define el tipo de respuesta que se está recibiendo. Es decir, si el cliente recibe una respuesta con ‘opcion’: 0 significa que está recibiendo un nuevo estado del juego, y si recibe una respuesta con ‘opcion’: 3 es porque está recibiendo un mensaje de otro jugador.
+1. EXPLICACION E HISTORIA
+El conquián o tercerilla es un juego de naipes que se juega con la baraja española. Se juega con dos o tres jugadores, la razón para     el 
+cambio de nombre es esta misma siendo "tercerilla el que se juega de tres".
+- Mazo: Baraja española
+- Origen: México
+- Tarjetas: 40
+- Jugadores: 2-6 
+- Tiempo para jugar: 20 minutos.
+
+
+2.DESCRIPCION Y DETALLE DEL PROTOCOLO
+El protocolo utilizado se formó utilizando el formato JSON. La manera en la que funciona es que ambas respuestas del Servidor y del Cliente 
+mandan un parámetro ‘opcion’ el cual define el tipo de respuesta que se está recibiendo. Es decir, si el cliente recibe una respuesta   con 
+‘opcion’: 0 significa que está recibiendo un nuevo estado del juego, y si recibe una respuesta con ‘opcion’: 3 es porque está recibiendo un 
+mensaje de otro jugador.
 
   PROTOCOLO SERVER
   Respuestas del server al cliente:
@@ -19,4 +32,17 @@ El protocolo utilizado se formó utilizando el formato JSON. La manera en la que
     nombreCarta,
   cantidadCartasBaraja,
   cantidadCartas,
+  
+  PROTOCOLO CLIENTE
+  Respuestas del cliente al server:
+  opcion, 
+  playerId,
+  gameId,
+  pasar,
+  cartaBasuraId,
+  cartasMano,
+    cartaId,
+  cartaPagarId,
+  
+  
     
