@@ -150,7 +150,7 @@ const clienteResponse2 = {
     playerId: 0, // identificador del cliente que manda el mensaje,
     mensaje: "" // Mensaje que desea mandar
 }
-`
+```
 
 ### Principales dificultades y lecciones aprendidas
 - En la definición del protocolo fue un poco complicado porque es un lienzo en blanco, al principio fue difícil definirlo pero conforme se fue construyendo fue más sencillo.
