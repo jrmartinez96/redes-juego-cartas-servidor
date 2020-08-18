@@ -29,7 +29,7 @@ https://youtu.be/9h4wbNHmml4
 
 
 ### Protocolo
-`
+```
 /*
 ---------------------- SERVER RESPOSE ----------------------
 Cada response tendrá un parametro de "opcion", esto determinará lo que esta mandando el servidor al cliente
