@@ -1,0 +1,4 @@
+REQUERIMIENTOS
+
+1.DESCRIPCION Y DETALLE DEL PROTOCOLO
+El protocolo utilizado se formó utilizando el formato JSON. La manera en la que funciona es que ambas respuestas del Servidor y del Cliente mandan un parámetro ‘opcion’ el cual define el tipo de respuesta que se está recibiendo. Es decir, si el cliente recibe una respuesta con ‘opcion’: 0 significa que está recibiendo un nuevo estado del juego, y si recibe una respuesta con ‘opcion’: 3 es porque está recibiendo un mensaje de otro jugador.
